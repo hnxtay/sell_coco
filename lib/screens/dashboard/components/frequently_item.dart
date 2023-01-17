@@ -31,6 +31,7 @@ class FrequentlyUsedItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
+          vertical: 8,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

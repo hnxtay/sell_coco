@@ -95,6 +95,12 @@ class HomeScreen extends StatelessWidget {
         Center(
           child: Text('profile'),
         ),
+        Center(
+          child: Text('profile'),
+        ),
+        Center(
+          child: Text('profile'),
+        ),
       ],
     );
   }

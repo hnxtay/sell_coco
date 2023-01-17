@@ -11,4 +11,5 @@ abstract class AppIcons {
   static const iconDashboard = 'assets/icons/icon_dashboard.svg';
   static const iconRoom = 'assets/icons/icon_door.svg';
   static const iconProfile = 'assets/icons/icon_profile.svg';
+  static const iconNavigateBack = 'assets/icons/ic_navigate_back.svg';
 }
