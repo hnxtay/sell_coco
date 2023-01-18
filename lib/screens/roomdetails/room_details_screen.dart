@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../common/assets/app_colors.dart';
 import '../../common/assets/app_icons.dart';
 import '../../common/extensions/extensions.dart';
-import '../../common/widgets/vertical_slider.dart';
+import '../../common/widgets/container_icon.dart';
+import '../../common/widgets/custom_slider.dart';
 import '../../models/smart_item_model.dart';
 import '../dashboard/components/frequently_item.dart';
 
@@ -15,7 +17,8 @@ class RoomDetailsScreen extends StatefulWidget {
 }
 
 class _RoomDetailsScreenState extends State<RoomDetailsScreen> {
-  double _value = 10;
+  double _value = 20;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,12 @@ class _RoomDetailsScreenState extends State<RoomDetailsScreen> {
           ),
           child: SingleChildScrollView(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 32,
+                ),
                 FrequentlyUsedItem(
                   value: true,
                   onChange: (value) {},
@@ -58,29 +66,83 @@ class _RoomDetailsScreenState extends State<RoomDetailsScreen> {
                 const SizedBox(
                   height: 64,
                 ),
+                Center(
+                  child: Text(
+                    '$_value°',
+                    style: context.textTheme.titleLarge?.copyWith(
+                      fontSize: 64,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Celsius',
+                    style: context.textTheme.titleLarge?.copyWith(
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+                CustomSlider(
+                  value: _value,
+                  onDragging: (handlerIndex, lowerValue, upperValue) {
+                    setState(() {
+                      _value = lowerValue;
+                    });
+                  },
+                  labelBuilder: (double value) {
+                    return Text(
+                      '$value°',
+                      style: context.textTheme.titleMedium,
+                    );
+                  },
+                ),
                 Text(
-                  '32°',
+                  'Swing',
                   style: context.textTheme.titleLarge?.copyWith(
-                    fontSize: 64,
+                    fontSize: 16,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Text(
-                  'Celsius',
-                  style: context.textTheme.titleLarge?.copyWith(
-                    fontSize: 14,
-                  ),
+                const SizedBox(
+                  height: 16,
                 ),
-                VerticalSlider(
-                    onChanged: (value) {
-                      setState(() {
-                        _value = value;
-                      });
-                    },
-                    min: 0,
-                    max: 100,
-                    width: 40,
-                    value: _value)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: ContainerIcon(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                        ),
+                        asset: AppIcons.iconHorizontalSwing,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                          color: AppColors.background,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: ContainerIcon(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                        ),
+                        asset: AppIcons.iconVerticalSwing,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                          color: AppColors.background,
+                        ),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),

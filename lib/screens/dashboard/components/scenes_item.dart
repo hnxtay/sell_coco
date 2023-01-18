@@ -4,7 +4,7 @@ import '../../../common/assets/app_colors.dart';
 import '../../../common/assets/app_icons.dart';
 import '../../../common/extensions/extensions.dart';
 import '../../../common/widgets/app_switch.dart';
-import '../../../common/widgets/circle_icon.dart';
+import '../../../common/widgets/container_icon.dart';
 
 class ScenesItem extends StatelessWidget {
   const ScenesItem(
@@ -32,9 +32,9 @@ class ScenesItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const CircleIcon(
+          const ContainerIcon(
             asset: AppIcons.iconAirPurifier,
-            padding: 8,
+            padding: EdgeInsets.all(8,),
           ),
           Expanded(
             child: Text(
