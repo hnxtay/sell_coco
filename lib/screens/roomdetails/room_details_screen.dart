@@ -18,6 +18,7 @@ class RoomDetailsScreen extends StatefulWidget {
 
 class _RoomDetailsScreenState extends State<RoomDetailsScreen> {
   double _value = 20;
+  double _fanValue = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +85,8 @@ class _RoomDetailsScreenState extends State<RoomDetailsScreen> {
                   ),
                 ),
                 CustomSlider(
+                  max: 27,
+                  min: 16,
                   value: _value,
                   onDragging: (handlerIndex, lowerValue, upperValue) {
                     setState(() {
@@ -93,6 +96,31 @@ class _RoomDetailsScreenState extends State<RoomDetailsScreen> {
                   labelBuilder: (double value) {
                     return Text(
                       '$value°',
+                      style: context.textTheme.titleMedium,
+                    );
+                  },
+                ),
+                Center(
+                  child: SvgPicture.asset(
+                    AppIcons.iconFanSpeed(
+                      _fanValue.toInt(),
+                    ),
+                    height: 48,
+                  ),
+                ),
+                CustomSlider(
+                  max: 3,
+                  min: 0,
+                  value: _fanValue,
+                  axis: Axis.vertical,
+                  onDragging: (handlerIndex, lowerValue, upperValue) {
+                    setState(() {
+                      _fanValue = lowerValue;
+                    });
+                  },
+                  labelBuilder: (double value) {
+                    return Text(
+                      '$value',
                       style: context.textTheme.titleMedium,
                     );
                   },
