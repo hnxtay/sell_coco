@@ -21,21 +21,26 @@ class DashboardScreenScenesSection extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        ListView.separated(
-          shrinkWrap: true,
-          itemBuilder: (BuildContext context, int index) {
-            return ScenesItem(
-              label: 'Morning Scenes',
-              value: false,
-              onChange: (value) {},
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(
-              height: 16,
-            );
-          },
-          itemCount: 2,
+        MediaQuery.removePadding(
+          context: context,
+          removeBottom: true,
+          child: ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              return ScenesItem(
+                label: 'Morning Scenes',
+                value: false,
+                onChange: (value) {},
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                height: 16,
+              );
+            },
+            itemCount: 2,
+          ),
         ),
       ],
     );

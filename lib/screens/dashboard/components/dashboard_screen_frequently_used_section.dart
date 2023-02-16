@@ -4,6 +4,7 @@ import '../../../common/assets/app_icons.dart';
 import '../../../common/extensions/context.dart';
 import '../../../l10n/l10n.dart';
 import '../../../models/smart_item_model.dart';
+import '../../../navigation/navigation.dart';
 import 'frequently_item.dart';
 
 class DashboardScreenFrequentlyUsedSection extends StatelessWidget {
@@ -57,13 +58,19 @@ class DashboardScreenFrequentlyUsedSection extends StatelessWidget {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
           crossAxisCount: 2,
-          childAspectRatio: 1.5,
+          childAspectRatio: 1.25,
           children: smartItems
               .map(
-                (smartItem) => FrequentlyUsedItem(
-                  value: true,
-                  onChange: (value) {},
-                  smartItem: smartItem,
+                (smartItem) => GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    context.navigator.pushNamed(AppRoutes.roomDetails);
+                  },
+                  child: FrequentlyUsedItem(
+                    value: true,
+                    onChange: (value) {},
+                    smartItem: smartItem,
+                  ),
                 ),
               )
               .toList(),

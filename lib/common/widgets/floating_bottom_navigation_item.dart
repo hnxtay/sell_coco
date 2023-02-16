@@ -13,41 +13,45 @@ class FloatingBottomNavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          8,
-        ),
-        color: isActive ? AppColors.darkBackground : AppColors.maybeBlack,
-      ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
-      duration: const Duration(milliseconds: 200),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.asset(
-            item.iconPath,
-            height: 24,
+    return Builder(builder: (context) {
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            8,
           ),
-          if (isActive)
-            const SizedBox(
-              width: 8,
-            ),
-          if (isActive)
-            Text(
-              item.label,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
+          color: isActive ? AppColors.darkBackground : AppColors.maybeBlack,
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
+        child: AnimatedSize(
+          duration: const Duration(milliseconds: 200),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset(
+                item.iconPath,
+                height: 24,
               ),
-            ),
-        ],
-      ),
-    );
+              if (isActive)
+                const SizedBox(
+                  width: 8,
+                ),
+              if (isActive)
+                Text(
+                  item.label,
+                  style: context.textTheme.bodyMedium?.copyWith(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }
 

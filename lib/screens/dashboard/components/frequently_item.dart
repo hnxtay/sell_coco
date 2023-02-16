@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../common/assets/app_colors.dart';
 import '../../../common/extensions/context.dart';
 import '../../../common/widgets/app_switch.dart';
-import '../../../common/widgets/circle_icon.dart';
+import '../../../common/widgets/container_icon.dart';
 import '../../../l10n/l10n.dart';
 import '../../../models/smart_item_model.dart';
 
@@ -31,6 +31,7 @@ class FrequentlyUsedItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
+          vertical: 8,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -38,9 +39,9 @@ class FrequentlyUsedItem extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleIcon(
+                ContainerIcon(
                   asset: smartItem.iconPath,
-                  padding: 8,
+                  padding: const EdgeInsets.all(8,),
                 ),
                 const Spacer(),
                 AppSwitch(

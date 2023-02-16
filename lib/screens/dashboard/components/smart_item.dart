@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/assets/app_colors.dart';
 import '../../../common/extensions/extensions.dart';
-import '../../../common/widgets/circle_icon.dart';
+import '../../../common/widgets/container_icon.dart';
 import '../../../l10n/l10n.dart';
 import '../../../models/smart_item_model.dart';
 
@@ -35,7 +34,7 @@ class SmartItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleIcon(
+            ContainerIcon(
               asset: smartItem.iconPath,
             ),
             const SizedBox(

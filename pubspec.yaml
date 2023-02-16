@@ -66,6 +66,8 @@ dependencies:
   #Load svg
   flutter_svg: ^1.1.6
 
+  another_xlider: ^1.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

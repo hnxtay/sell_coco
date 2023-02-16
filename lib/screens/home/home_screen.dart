@@ -35,6 +35,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      extendBody: true,
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.symmetric(
@@ -61,6 +62,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SafeArea(
+        bottom: false,
         child: BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(context.read()),
           child: BlocBuilder<HomeBloc, HomeState>(
