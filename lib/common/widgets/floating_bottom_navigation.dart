@@ -22,31 +22,32 @@ class FloatingBottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 16,
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 32,
+      ),
+      padding: const EdgeInsets.symmetric(
+        vertical: 12,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          16,
         ),
-        height: 56,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            16,
-          ),
-          color: AppColors.maybeBlack,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          mainAxisSize: MainAxisSize.max,
-          children: List.generate(
-            itemCount,
-            (index) => GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () => onItemClicked?.call(index),
-              child: itemBuilder(
-                context,
-                index,
-                currentIndex,
-              ),
+        color: AppColors.maybeBlack,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisSize: MainAxisSize.max,
+        children: List.generate(
+          itemCount,
+          (index) => GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => onItemClicked?.call(index),
+            child: itemBuilder(
+              context,
+              index,
+              currentIndex,
             ),
           ),
         ),
